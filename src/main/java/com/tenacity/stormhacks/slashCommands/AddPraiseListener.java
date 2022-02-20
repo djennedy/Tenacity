@@ -22,6 +22,14 @@ public class AddPraiseListener {
                 User user = slashCommandInteraction.getOptionUserValueByIndex(0).orElse(null);
                 String acc = slashCommandInteraction.getOptionStringValueByIndex(1).orElse(null);
 
+                if(user ==null || acc==null)
+                {
+                    slashCommandInteraction.createImmediateResponder()
+                            .setContent("Something went wrong, please try again!")
+                            .respond();
+                    return;
+                }
+
                 if(!hashMap.containsKey(user))
                 {
                     hashMap.put(user, new ArrayList<String>());
