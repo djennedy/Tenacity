@@ -1,9 +1,6 @@
 package com.tenacity.stormhacks;
 
-import com.tenacity.stormhacks.slashCommands.AddPraiseListener;
-import com.tenacity.stormhacks.slashCommands.HelpListener;
-import com.tenacity.stormhacks.slashCommands.PingListener;
-import com.tenacity.stormhacks.slashCommands.ShowPraiseListener;
+import com.tenacity.stormhacks.slashCommands.*;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.interaction.*;
 
@@ -56,21 +53,24 @@ public class Main {
 //                .createForServer(myServer)
 //                .join();
 
-        SlashCommand addPraise = SlashCommand.with("showpraise","Shows all the accomplishment of a user")
-                .createForServer(myServer)
-                .join();
-        SlashCommand removePraise = SlashCommand.with("rmpraise", "Removes one of your accomplishments",
-                new SlashCommandOptionBuilder()
-                        .setType(SlashCommandOptionType.DECIMAL)
-                        .setName("Index")
-                        .setDescription("Index number of the accomplishment you would like to remove. Defaults to most recent if not given.")
-                        .setRequired(false))
-                .createForServer(myServer)
-                .join();
+//        SlashCommand addPraise = SlashCommand.with("showpraise","Shows all the accomplishment of a user")
+//                .createForServer(myServer)
+//                .join();
+//        SlashCommand removePraise = SlashCommand.with("rmpraise", "Removes one of your accomplishments",
+//                new SlashCommandOptionBuilder()
+//                        .setType(SlashCommandOptionType.DECIMAL)
+//                        .setName("Index")
+//                        .setDescription("Index number of the accomplishment you would like to remove. Defaults to most recent if not given.")
+//                        .setRequired(false))
+//                .createForServer(myServer)
+//                .join();
 
         //Listeners
         HelpListener helpListener = new HelpListener();
         PingListener pingListener = new PingListener();
+        AddPraiseListener addPraiseListener = new AddPraiseListener();
+        RemovePraiseListener removePraiseListener = new RemovePraiseListener();
+        ShowPraiseListener showPraiseListener = new ShowPraiseListener();
 
 
 
