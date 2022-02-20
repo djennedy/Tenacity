@@ -1,0 +1,39 @@
+package com.tenacity.stormhacks.slashCommands;
+
+import com.tenacity.stormhacks.DataMap;
+import com.tenacity.stormhacks.TenacityApi;
+import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.user.User;
+import org.javacord.api.interaction.SlashCommandInteraction;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class AddPraiseListener {
+    DiscordApi api = TenacityApi.getInstance().api;
+    HashMap<User, List<String>> hashMap = DataMap.getInstance().hashMap;
+
+    public AddPraiseListener()
+    {
+        api.addSlashCommandCreateListener(event -> {
+            SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
+            if (slashCommandInteraction.getCommandName().equals("addpraise")) {
+                User user = slashCommandInteraction.getOptionUserValueByIndex(0).orElse(null);
+                String acc = slashCommandInteraction.getOptionStringValueByIndex(1).orElse(null);
+
+                if(!hashMap.containsKey(user))
+                {
+                    hashMap.put(user, new ArrayList<String>());
+                }
+
+                List<String> list = hashMap.get(user);
+                list.add(acc);
+
+                slashCommandInteraction.createImmediateResponder()
+                        .setContent("Added the accomplishment to the user's list.")
+                        .respond();
+            }
+        });
+    }
+}
