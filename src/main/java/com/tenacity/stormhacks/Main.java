@@ -53,6 +53,15 @@ public class Main {
                 )
                 .createForServer(myServer)
                 .join();
+        SlashCommand removePraise = SlashCommand.with("rmpraise", "Removes one of your accomplishments",
+                new SlashCommandOptionBuilder()
+                        .setType(SlashCommandOptionType.DECIMAL)
+                        .setName("Index")
+                        .setDescription("Index number of the accomplishment you would like to remove. " +
+                                "If no number is given, the most recent accomplishment will be removed.")
+                        .setRequired(false))
+                .createForServer(myServer)
+                .join();
 
         //Listeners
         HelpListener helpListener = new HelpListener();
