@@ -5,6 +5,7 @@ import com.tenacity.stormhacks.TenacityApi;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteraction;
+import org.javacord.api.interaction.callback.InteractionCallbackDataFlag;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ public class AddPraiseListener {
                 {
                     slashCommandInteraction.createImmediateResponder()
                             .setContent("Something went wrong, please try again!")
+                            .setFlags(InteractionCallbackDataFlag.EPHEMERAL)
                             .respond();
                     return;
                 }
@@ -39,7 +41,8 @@ public class AddPraiseListener {
                 list.add(acc);
 
                 slashCommandInteraction.createImmediateResponder()
-                        .setContent("Successfully added the accomplishment to the user's list.")
+                        .setContent("Successfully added the accomplishment to " +user.getDiscriminatedName() +"'s list.")
+                        .setFlags(InteractionCallbackDataFlag.EPHEMERAL)
                         .respond();
             }
         });

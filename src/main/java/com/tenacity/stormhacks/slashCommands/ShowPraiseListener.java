@@ -5,6 +5,7 @@ import com.tenacity.stormhacks.TenacityApi;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteraction;
+import org.javacord.api.interaction.callback.InteractionCallbackDataFlag;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,7 @@ public class ShowPraiseListener {
                 if(!hashMap.containsKey(user)){
                     slashCommandInteraction.createImmediateResponder()
                             .setContent("You are a wonderful person!!")
+                            .setFlags(InteractionCallbackDataFlag.EPHEMERAL)
                             .respond();
                 } else{
                     StringBuilder praises = new StringBuilder();
