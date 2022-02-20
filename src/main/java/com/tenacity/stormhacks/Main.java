@@ -29,7 +29,7 @@ public class Main {
 //        SlashCommand help = SlashCommand.with("help","Shows how to use the bot.").createGlobal(tenacityApi.api).join();
 //        SlashCommand ping = SlashCommand.with("ping", "A simple ping pong command!").createGlobal(tenacityApi.api).join();
 //        SlashCommand test = SlashCommand.with("test","testing server only slash command").createForServer(myServer).join();
-//        SlashCommand praise = SlashCommand.with("praise","Lists the accomplishments of the user saved"
+//        SlashCommand praise = SlashCommand.with("praise","Shows all of the saved accomplishments of a user."
 //                , new SlashCommandOptionBuilder()
 //                        .setType(SlashCommandOptionType.USER)
 //                        .setName("User")
@@ -53,9 +53,6 @@ public class Main {
 //                .createForServer(myServer)
 //                .join();
 
-//        SlashCommand addPraise = SlashCommand.with("showpraise","Shows all the accomplishment of a user")
-//                .createForServer(myServer)
-//                .join();
 //        SlashCommand removePraise = SlashCommand.with("rmpraise", "Removes one of your accomplishments",
 //                new SlashCommandOptionBuilder()
 //                        .setType(SlashCommandOptionType.DECIMAL)
