@@ -23,40 +23,40 @@ public class Main {
         );
 
         //Adding slash commands
-        SlashCommand help = SlashCommand.with("help","Shows how to use the bot.").createGlobal(tenacityApi.api).join();
-        SlashCommand ping = SlashCommand.with("ping", "A simple ping pong command!").createGlobal(tenacityApi.api).join();
-        SlashCommand praise = SlashCommand.with("praise","Shows all of the saved accomplishments of a user."
-                , new SlashCommandOptionBuilder()
-                        .setType(SlashCommandOptionType.USER)
-                        .setName("User")
-                        .setDescription("The user that you would like to show their accomplishments to.")
-                        .setRequired(false)
-                )
-                .createGlobal(tenacityApi.api)
-                .join();
-        SlashCommand addPraise = SlashCommand.with("addpraise","Adds an accomplishment of a user",
-                new SlashCommandOptionBuilder()
-                        .setType(SlashCommandOptionType.USER)
-                        .setName("User")
-                        .setDescription("The user that you would like to add an accomplishment to")
-                        .setRequired(true),
-                new SlashCommandOptionBuilder()
-                        .setType(SlashCommandOptionType.STRING)
-                        .setName("Accomplishment")
-                        .setDescription("The accomplishment you would like to add")
-                        .setRequired(true)
-                )
-                .createGlobal(tenacityApi.api)
-                .join();
-        SlashCommand removePraise = SlashCommand.with("rmpraise", "Removes one of your accomplishments",
-                new SlashCommandOptionBuilder()
-                        .setType(SlashCommandOptionType.DECIMAL)
-                        .setName("Index")
-                        .setDescription("Index number of the accomplishment you would like to remove. Defaults to most recent if not given.")
-                        .setRequired(false)
-                )
-                .createGlobal(tenacityApi.api)
-                .join();
+//        SlashCommand help = SlashCommand.with("help","Shows how to use the bot.").createGlobal(tenacityApi.api).join();
+//        SlashCommand ping = SlashCommand.with("ping", "A simple ping pong command!").createGlobal(tenacityApi.api).join();
+//        SlashCommand praise = SlashCommand.with("praise","Shows all of the saved accomplishments of a user."
+//                , new SlashCommandOptionBuilder()
+//                        .setType(SlashCommandOptionType.USER)
+//                        .setName("User")
+//                        .setDescription("The user that you would like to show their accomplishments to.")
+//                        .setRequired(false)
+//                )
+//                .createGlobal(tenacityApi.api)
+//                .join();
+//        SlashCommand addPraise = SlashCommand.with("addpraise","Adds an accomplishment of a user",
+//                new SlashCommandOptionBuilder()
+//                        .setType(SlashCommandOptionType.USER)
+//                        .setName("User")
+//                        .setDescription("The user that you would like to add an accomplishment to")
+//                        .setRequired(true),
+//                new SlashCommandOptionBuilder()
+//                        .setType(SlashCommandOptionType.STRING)
+//                        .setName("Accomplishment")
+//                        .setDescription("The accomplishment you would like to add")
+//                        .setRequired(true)
+//                )
+//                .createGlobal(tenacityApi.api)
+//                .join();
+//        SlashCommand removePraise = SlashCommand.with("rmpraise", "Removes one of your accomplishments",
+//                new SlashCommandOptionBuilder()
+//                        .setType(SlashCommandOptionType.DECIMAL)
+//                        .setName("Index")
+//                        .setDescription("Index number of the accomplishment you would like to remove. Defaults to most recent if not given.")
+//                        .setRequired(false)
+//                )
+//                .createGlobal(tenacityApi.api)
+//                .join();
 
         //Listeners
         HelpListener helpListener = new HelpListener();
