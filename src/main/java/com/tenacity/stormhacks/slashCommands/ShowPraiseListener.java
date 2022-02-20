@@ -3,37 +3,47 @@ package com.tenacity.stormhacks.slashCommands;
 import com.tenacity.stormhacks.DataMap;
 import com.tenacity.stormhacks.TenacityApi;
 import org.javacord.api.DiscordApi;
-import org.javacord.api.entity.message.Message;
-import org.javacord.api.entity.message.MessageBuilder;
-import org.javacord.api.entity.message.MessageDecoration;
 import org.javacord.api.entity.user.User;
-import org.javacord.api.interaction.*;
 import org.javacord.api.interaction.SlashCommandInteraction;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ShowPraiseListener {
     DiscordApi api = TenacityApi.getInstance().api;
     HashMap<User, List<String>> hashMap = DataMap.getInstance().hashMap;
 
-//    public ShowPraiseListener(){
-//        api.addSlashCommandCreateListener(event -> {
-//            SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
-//            if(slashCommandInteraction.getCommandName().equals("showpraise")){
-//
-//            }
-//        })
-//    }
-//
+    public ShowPraiseListener(){
+        api.addSlashCommandCreateListener(event -> {
+            SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
+            if(slashCommandInteraction.getCommandName().equals("showpraise")){
+                User user = slashCommandInteraction.getUser();
 
-//    Message personalPraise = new MessageBuilder()
-//            .append("Hi")
-//            .append(praise.getUser().getMentionTag())
-//            .append("!\n")
-//            .append("Here are all the great things people are saying about you today! \uD83D\uDE03")
-//            .append(userTest.forEach())
+                if(!hashMap.containsKey(user)){
+                    slashCommandInteraction.createImmediateResponder()
+                            .setContent("You are a wonderful person!!")
+                            .respond();
+                } else{
+                    StringBuilder praises = new StringBuilder();
+                    AtomicInteger i = new AtomicInteger();
+                    List<String> praiseList = hashMap.get(user);
+                    praiseList.forEach((praise) -> {
+                        praises.append(i.getAndIncrement());
+                        praises.append(". \"");
+                        praises.append(praise);
+                        praises.append("\" \n");
+                    });
+
+                    slashCommandInteraction.createImmediateResponder()
+                            .setContent(String.valueOf(praises))
+                            .respond();
+                }
+
+            }
+        });
+    }
+
 
 
 }
