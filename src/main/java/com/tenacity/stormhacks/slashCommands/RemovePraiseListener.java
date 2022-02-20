@@ -20,6 +20,22 @@ public class RemovePraiseListener {
             if (slashCommandInteraction.getCommandName().equals("rmpraise")) {
                 List<String> list = hashMap.get(slashCommandInteraction.getUser());
 
+                if(list==null)
+                {
+                    slashCommandInteraction.createImmediateResponder()
+                            .setContent("ERROR: Attempting to remove from an empty list!")
+                            .respond();
+                    return;
+                }
+
+                if(list.isEmpty())
+                {
+                    slashCommandInteraction.createImmediateResponder()
+                            .setContent("ERROR: Attempting to remove from an empty list!")
+                            .respond();
+                    return;
+                }
+
                 if(slashCommandInteraction.getArguments().isEmpty())
                 {
                     list.remove(list.size()-1);
