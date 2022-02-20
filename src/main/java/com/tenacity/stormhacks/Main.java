@@ -65,5 +65,9 @@ public class Main {
         RemovePraiseListener removePraiseListener = new RemovePraiseListener();
         PraiseListener showPraiseListener = new PraiseListener();
 
+        System.out.println("test");
+        System.out.println(tenacityApi.api.createBotInvite());
+
+
     }
 }
