@@ -41,7 +41,7 @@ public class RemovePraiseListener {
                 else
                 {
                     slashCommandInteraction.createImmediateResponder()
-                            .setContent("ERROR: Invalid index number. Praise not removed, please insert a valid index number!")
+                            .setContent("ERROR: Invalid index number. Accomplishment not removed, please insert a valid index number!")
                             .respond();
                     return;
                 }
