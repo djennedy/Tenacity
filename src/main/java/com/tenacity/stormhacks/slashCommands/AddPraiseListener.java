@@ -31,7 +31,7 @@ public class AddPraiseListener {
                 list.add(acc);
 
                 slashCommandInteraction.createImmediateResponder()
-                        .setContent("Added the accomplishment to the user's list.")
+                        .setContent("Successfully added the accomplishment to the user's list.")
                         .respond();
             }
         });
