@@ -57,8 +57,7 @@ public class Main {
                 new SlashCommandOptionBuilder()
                         .setType(SlashCommandOptionType.DECIMAL)
                         .setName("Index")
-                        .setDescription("Index number of the accomplishment you would like to remove. " +
-                                "If no number is given, the most recent accomplishment will be removed.")
+                        .setDescription("Index number of the accomplishment you would like to remove. Defaults to most recent if not given.")
                         .setRequired(false))
                 .createForServer(myServer)
                 .join();
