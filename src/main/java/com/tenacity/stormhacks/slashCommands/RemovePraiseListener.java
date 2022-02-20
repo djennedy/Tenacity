@@ -18,6 +18,16 @@ public class RemovePraiseListener {
         api.addSlashCommandCreateListener(event -> {
             SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
             if (slashCommandInteraction.getCommandName().equals("rmpraise")) {
+                List<String> list = hashMap.get(slashCommandInteraction.getUser());
+
+                if(slashCommandInteraction.getArguments().isEmpty())
+                {
+                    list.remove(list.size()-1);
+                    slashCommandInteraction.createImmediateResponder()
+                            .setContent("Successfully removed your most recent accomplishment.")
+                            .respond();
+                }
+
                 Double doub = slashCommandInteraction.getOptionDecimalValueByIndex(0).orElse(null);
                 int index;
 
@@ -33,7 +43,6 @@ public class RemovePraiseListener {
                     return;
                 }
 
-                List<String> list = hashMap.get(slashCommandInteraction.getUser());
                 if(index<=0 || index > list.size())
                 {
                     list.remove(index-1);
@@ -48,7 +57,7 @@ public class RemovePraiseListener {
 
 
                 slashCommandInteraction.createImmediateResponder()
-                        .setContent("")
+                        .setContent("Successfully removed accomplishment number "+ Integer.toString(index)+".")
                         .respond();
             }
         });
