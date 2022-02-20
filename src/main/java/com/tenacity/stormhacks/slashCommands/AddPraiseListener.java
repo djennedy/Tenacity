@@ -19,7 +19,7 @@ public class AddPraiseListener {
         api.addSlashCommandCreateListener(event -> {
             SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
             if (slashCommandInteraction.getCommandName().equals("addpraise")) {
-                User user = slashCommandInteraction.getOptionUserValueByIndex(0).orElse(null);
+                User user = slashCommandInteraction.requestOptionUserValueByIndex(0).orElse(null).join();
                 String acc = slashCommandInteraction.getOptionStringValueByIndex(1).orElse(null);
 
                 if(user ==null || acc==null)
