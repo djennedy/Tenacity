@@ -16,4 +16,5 @@ We managed to learn about futures and multithreaded asynchronous events. We also
 ## What's next for Tenacity
 We would like to implement a database on Tenacity so that it will not lose memory if a shutdown occurs. Implementing a language filtering system would be a good step forward to avoid anybody sending harmful messages. 
 ## How to add it to your server
+Click on this link to add the bot to your server! Enjoy!
 https://discord.com/api/oauth2/authorize?client_id=944471932475150356&permissions=8&scope=bot%20applications.commands
