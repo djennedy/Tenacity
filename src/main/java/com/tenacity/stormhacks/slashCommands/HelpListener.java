@@ -12,25 +12,24 @@ public class HelpListener {
     DiscordApi api = TenacityApi.getInstance().api;
     public HelpListener()
     {
-        EmbedBuilder embed = new EmbedBuilder()
-                .setTitle("Title")
-                .setDescription("Description")
-                .setAuthor("Author Name", "http://google.com/", "https://cdn.discordapp.com/embed/avatars/0.png")
-                .addField("A field", "Some text inside the field")
-                .addInlineField("An inline field", "More text")
-                .addInlineField("Another inline field", "Even more text")
-                .setColor(Color.BLUE)
-                .setFooter("Footer", "https://cdn.discordapp.com/embed/avatars/1.png")
-                .setImage("https://media.giphy.com/media/KztT2c4u8mYYUiMKdJ/giphy.gif")
-                .setThumbnail("https://images2.minutemediacdn.com/image/upload/c_crop,h_1601,w_2379,x_0,y_0/v1626804597/shape/mentalfloss/648495-gettyimages-1213860280.jpg?itok=TM9y9lQ3");
-
         api.addSlashCommandCreateListener(event -> {
             SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
             if(slashCommandInteraction.getCommandName().equals("help"))
             {
                 slashCommandInteraction.createImmediateResponder()
-                        .setContent("Insert help here")
-                        .addEmbed(embed)
+                        .setContent("Hi there!\n"+
+                                "Tenacity is a Discord bot with the purpose of driving insecurities away.\n"+
+                                "We often feel like other people are always more talented and accomplished than we are.\n" +
+                                "However, we tend to forget that we are just as amazing as others.\n" +
+                                "Tenacity is created to help combat the feeling of being inferior to others by allowing users to remind themselves and others of their own accomplishments.\n" +
+                                "\n" +
+                                "USAGE:\n" +
+                                "/addpraise : Add to a user's list of accomplishments.\n" +
+                                "/praise : Send a user's list of accomplishments to them through direct message.\n" +
+                                "/rmpraise : Remove one of your accomplishments from our list.\n" +
+                                "/help : Shows how to use the bot and why we build this bot.\n" +
+                                "/ping : Pong!"
+                        )
                         .setFlags(InteractionCallbackDataFlag.EPHEMERAL)
                         .respond();
             }

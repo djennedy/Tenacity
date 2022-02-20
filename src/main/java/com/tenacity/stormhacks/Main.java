@@ -2,10 +2,6 @@ package com.tenacity.stormhacks;
 
 import com.tenacity.stormhacks.slashCommands.*;
 import org.javacord.api.entity.server.Server;
-import org.javacord.api.interaction.*;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -67,7 +63,7 @@ public class Main {
         PingListener pingListener = new PingListener();
         AddPraiseListener addPraiseListener = new AddPraiseListener();
         RemovePraiseListener removePraiseListener = new RemovePraiseListener();
-        ShowPraiseListener showPraiseListener = new ShowPraiseListener();
+        PraiseListener showPraiseListener = new PraiseListener();
 
 
 

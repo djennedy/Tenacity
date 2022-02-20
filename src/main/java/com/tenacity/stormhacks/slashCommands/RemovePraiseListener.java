@@ -41,9 +41,9 @@ public class RemovePraiseListener {
 
                 if(slashCommandInteraction.getArguments().isEmpty())
                 {
-                    list.remove(list.size()-1);
+                    String toBeRemoved = list.remove(list.size()-1);
                     slashCommandInteraction.createImmediateResponder()
-                            .setContent("Successfully removed your most recent accomplishment.")
+                            .setContent("Successfully removed your most recent accomplishment added: "+ toBeRemoved)
                             .setFlags(InteractionCallbackDataFlag.EPHEMERAL)
                             .respond();
                 }
@@ -64,9 +64,13 @@ public class RemovePraiseListener {
                     return;
                 }
 
-                if(index<=0 || index > list.size())
+                if(index>=0 || index < list.size())
                 {
-                    list.remove(index-1);
+                    String toBeRemoved = list.remove(index-1);
+                    slashCommandInteraction.createImmediateResponder()
+                            .setContent("Successfully removed accomplishment number "+ Integer.toString(index)+". : "+ toBeRemoved)
+                            .setFlags(InteractionCallbackDataFlag.EPHEMERAL)
+                            .respond();
                 }
                 else
                 {
@@ -76,12 +80,6 @@ public class RemovePraiseListener {
                             .respond();
                     return;
                 }
-
-
-                slashCommandInteraction.createImmediateResponder()
-                        .setContent("Successfully removed accomplishment number "+ Integer.toString(index)+".")
-                        .setFlags(InteractionCallbackDataFlag.EPHEMERAL)
-                        .respond();
             }
         });
     }

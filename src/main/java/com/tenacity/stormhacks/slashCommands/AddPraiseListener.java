@@ -3,6 +3,7 @@ package com.tenacity.stormhacks.slashCommands;
 import com.tenacity.stormhacks.DataMap;
 import com.tenacity.stormhacks.TenacityApi;
 import org.javacord.api.DiscordApi;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteraction;
 import org.javacord.api.interaction.callback.InteractionCallbackDataFlag;
@@ -38,10 +39,14 @@ public class AddPraiseListener {
                 }
 
                 List<String> list = hashMap.get(user);
+                acc = acc + " --- Added by : "+slashCommandInteraction.getUser().getDiscriminatedName();
                 list.add(acc);
 
+                EmbedBuilder thankYouGif = new EmbedBuilder().setImage("https://media.giphy.com/media/KB8C86UMgLDThpt4WT/giphy.gif");
                 slashCommandInteraction.createImmediateResponder()
-                        .setContent("Successfully added the accomplishment to " +user.getDiscriminatedName() +"'s list.")
+                        .setContent("Successfully added the accomplishment to " +user.getDiscriminatedName() +"'s list." +
+                                "\nThank you for reminding them how amazing and accomplished they are!")
+                        .addEmbed(thankYouGif)
                         .setFlags(InteractionCallbackDataFlag.EPHEMERAL)
                         .respond();
             }
