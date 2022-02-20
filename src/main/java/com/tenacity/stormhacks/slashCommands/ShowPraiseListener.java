@@ -5,6 +5,7 @@ import com.tenacity.stormhacks.TenacityApi;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteraction;
+import org.javacord.api.interaction.SlashCommandInteractionOption;
 import org.javacord.api.interaction.callback.InteractionCallbackDataFlag;
 
 import java.util.HashMap;
@@ -18,8 +19,16 @@ public class ShowPraiseListener {
     public ShowPraiseListener(){
         api.addSlashCommandCreateListener(event -> {
             SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
-            if(slashCommandInteraction.getCommandName().equals("showpraise")){
-                User user = slashCommandInteraction.getUser();
+            if(slashCommandInteraction.getCommandName().equals("praise")){
+                User user;
+                if (slashCommandInteraction.getArguments().isEmpty())
+                {
+                    user =  slashCommandInteraction.getUser();
+                }
+                else {
+                    user = slashCommandInteraction.requestOptionUserValueByIndex(0).orElse(null).join();
+                }
+
 
                 if(!hashMap.containsKey(user)){
                     slashCommandInteraction.createImmediateResponder()
@@ -28,13 +37,13 @@ public class ShowPraiseListener {
                             .respond();
                 } else{
                     StringBuilder praises = new StringBuilder();
-                    AtomicInteger i = new AtomicInteger();
+                    AtomicInteger i = new AtomicInteger(1);
                     List<String> praiseList = hashMap.get(user);
                     praiseList.forEach((praise) -> {
                         praises.append(i.getAndIncrement());
-                        praises.append(". \"");
+                        praises.append(". ");
                         praises.append(praise);
-                        praises.append("\" \n");
+                        praises.append("\n");
                     });
 
                     slashCommandInteraction.createImmediateResponder()

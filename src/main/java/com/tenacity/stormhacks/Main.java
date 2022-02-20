@@ -34,7 +34,7 @@ public class Main {
 //                        .setType(SlashCommandOptionType.USER)
 //                        .setName("User")
 //                        .setDescription("The user that you would like to show their accomplishments to.")
-//                        .setRequired(true)
+//                        .setRequired(false)
 //                )
 //                .createForServer(myServer)
 //                .join();
