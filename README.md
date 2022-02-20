@@ -1,4 +1,6 @@
 # Tenacity
+## What is Tenacity?
+Tenacity is a Discord bot aimed at helping users with their feelings of insecurities and inferiorities by reminding them of their own accomplishments.
 ## Inspiration
 One of the biggest problems that often plague students mentally is Imposter Syndrome. We felt that there are many times when people feel phony about themselves, or feel out of place from where they are. 
 ## What it does
